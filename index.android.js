@@ -1,22 +1,30 @@
 import React from 'react';
 import { 
+  Dimensions,
   StyleSheet,
   AppRegistry, 
   StatusBar,
   View, 
-  Text 
+  Text,
+  Image
 } from 'react-native';
 
+import picFemale from './assets/card_female.png'
+import picMale from './assets/card_male.png'
 
 class AwesomeProject extends React.Component {
   render() {
     return (
+      
       <View style={styles.container}> 
-        <StatusBar hidden={true} />
-          <Text style={[styles.defaultText,styles.selectedText]}>Sierra</Text>
-          <Text style={styles.defaultText}>Tanner</Text>
-          <Text style={styles.defaultText}>Travis</Text>
+          <Image style={styles.defaultImage} source={picMale} >
+            <Text style={styles.selectedText}>Male</Text>
+          </Image>
+          <Image style={styles.defaultImage} source={picFemale} >
+            <Text style={styles.selectedText}>Female</Text>
+          </Image>
       </View>
+      
     );
   }
 }
@@ -24,30 +32,32 @@ class AwesomeProject extends React.Component {
 const styles = StyleSheet.create({
   container :{
     flex: 1,
-    flexDirection: 'row', //column --> Untuk ke bawah
-    justifyContent: 'center', //flex-start --> Untuk Rata Kiri
+    flexDirection: 'column', //column --> Untuk ke bawah
+    justifyContent: 'space-around', //flex-start --> Untuk Rata Kiri
                               //flex-end --> Untuk Rata Kanan
                               //center --> Untuk tengah
     alignItems: 'center', //untuk atas/bawah jika flexDirection=row
     backgroundColor: '#DDD'
 
   },
-  defaultText: {
-    flex: 1, //Skala nya. Jika komponen nya ada 2 masing2 flex nya 1, maka ukuran nya masing2 setengah
-    textAlign: 'center',
-    justifyContent: 'center',
-    fontSize: 22,
-    padding: 10,
-    margin: 5,
-    color: 'black',
-    backgroundColor: 'yellow',
-    borderWidth: StyleSheet.hairlineWidth
+
+  defaultImage: {
+    flex: 1,
+    //borderRadius: 100,
+    width: Dimensions.get('window').width, //lebar nya sama dengan layar
+    resizeMode: 'cover',
+    justifyContent: 'flex-end',
+    alignItems:'flex-end'
+    //height: 200
   },
+
   selectedText: {
-    backgroundColor: 'red',
+    backgroundColor: 'rgba(0,0,0,.5)',
     color: 'white',
     fontWeight: 'bold',
-    alignSelf: 'flex-end'
+    fontSize: 30,
+    padding: 10
+
   }
 });
 
