@@ -6,7 +6,8 @@ import {
   StatusBar,
   View, 
   Text,
-  Image
+  Image,
+  TouchableHighlight
 } from 'react-native';
 
 import picFemale from './assets/card_female.png'
@@ -27,8 +28,19 @@ class AwesomeProject extends React.Component {
     const { backgroundColor } = this.state;
     return (
       <View style={[styles.container,{backgroundColor}]}> 
-        <Text style={styles.button} onPress={() => this.changeColor('red')}>Red</Text>
-        <Text style={styles.button} onPress={() => this.changeColor('green')}>Green</Text>
+        <TouchableHighlight style={styles.button} onPress={() => this.changeColor('red')} underlayColor = "orange">
+          <View style={styles.row}>
+            <View style={[styles.sample,{backgroundColor:'red'}]} />
+              <Text style={styles.text}>Red</Text>
+          </View>
+        </TouchableHighlight>
+        <TouchableHighlight style={styles.button} onPress={() => this.changeColor('green')}>
+          <View style={styles.row}>
+            <View style={[styles.sample,{backgroundColor: 'green'}]} />
+            <Text style={styles.text}>Green</Text>
+          </View>
+        </TouchableHighlight>
+        
       </View>
       
     );
@@ -47,14 +59,28 @@ const styles = StyleSheet.create({
 
   },
   button :{
-    fontSize: 30,
     borderWidth: 2,
     margin: 10,
     padding: 10,
     borderRadius: 10,
     alignSelf: 'stretch',
-    textAlign: 'center'
 
+  },
+  row :{
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  sample :{
+    height: 20,
+    width: 20,
+    borderRadius: 10,
+    borderWidth: 2,
+    margin: 5,
+    backgroundColor: 'white'
+  },
+  text :{
+    fontSize: 30,
+    margin: 5
   }
 });
 
