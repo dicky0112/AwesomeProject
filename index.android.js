@@ -13,16 +13,22 @@ import picFemale from './assets/card_female.png'
 import picMale from './assets/card_male.png'
 
 class AwesomeProject extends React.Component {
+  constructor(){
+    super()
+    this.state = {backgroundColor: 'blue'}
+    this.changeColor = this.changeColor.bind(this)
+  }
+
+  changeColor(warna){
+    this.setState({backgroundColor: warna})
+  }
+
   render() {
+    const { backgroundColor } = this.state;
     return (
-      
-      <View style={styles.container}> 
-          <Image style={styles.defaultImage} source={picMale} >
-            <Text style={styles.selectedText}>Male</Text>
-          </Image>
-          <Image style={styles.defaultImage} source={picFemale} >
-            <Text style={styles.selectedText}>Female</Text>
-          </Image>
+      <View style={[styles.container,{backgroundColor}]}> 
+        <Text style={styles.button} onPress={() => this.changeColor('red')}>Red</Text>
+        <Text style={styles.button} onPress={() => this.changeColor('green')}>Green</Text>
       </View>
       
     );
@@ -33,30 +39,21 @@ const styles = StyleSheet.create({
   container :{
     flex: 1,
     flexDirection: 'column', //column --> Untuk ke bawah
-    justifyContent: 'space-around', //flex-start --> Untuk Rata Kiri
+    justifyContent: 'center', //flex-start --> Untuk Rata Kiri
                               //flex-end --> Untuk Rata Kanan
                               //center --> Untuk tengah
     alignItems: 'center', //untuk atas/bawah jika flexDirection=row
-    backgroundColor: '#DDD'
+    backgroundColor: 'yellow',
 
   },
-
-  defaultImage: {
-    flex: 1,
-    //borderRadius: 100,
-    width: Dimensions.get('window').width, //lebar nya sama dengan layar
-    resizeMode: 'cover',
-    justifyContent: 'flex-end',
-    alignItems:'flex-end'
-    //height: 200
-  },
-
-  selectedText: {
-    backgroundColor: 'rgba(0,0,0,.5)',
-    color: 'white',
-    fontWeight: 'bold',
+  button :{
     fontSize: 30,
-    padding: 10
+    borderWidth: 2,
+    margin: 10,
+    padding: 10,
+    borderRadius: 10,
+    alignSelf: 'stretch',
+    textAlign: 'center'
 
   }
 });
