@@ -4,14 +4,14 @@ import {
   StyleSheet,
   AppRegistry, 
   StatusBar,
-  View, 
+  ScrollView, 
   Text,
   Image,
   TouchableHighlight
 } from 'react-native';
 
-import picFemale from './assets/card_female.png'
-import picMale from './assets/card_male.png'
+import ColorButton from './components/ColorButton'
+
 
 class AwesomeProject extends React.Component {
   constructor(){
@@ -27,21 +27,19 @@ class AwesomeProject extends React.Component {
   render() {
     const { backgroundColor } = this.state;
     return (
-      <View style={[styles.container,{backgroundColor}]}> 
-        <TouchableHighlight style={styles.button} onPress={() => this.changeColor('red')} underlayColor = "orange">
-          <View style={styles.row}>
-            <View style={[styles.sample,{backgroundColor:'red'}]} />
-              <Text style={styles.text}>Red</Text>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight style={styles.button} onPress={() => this.changeColor('green')}>
-          <View style={styles.row}>
-            <View style={[styles.sample,{backgroundColor: 'green'}]} />
-            <Text style={styles.text}>Green</Text>
-          </View>
-        </TouchableHighlight>
-        
-      </View>
+      <ScrollView style={[styles.container,{backgroundColor}]}> 
+        <ColorButton warnaLatar="red" onSelect33={this.changeColor}/>
+        <ColorButton warnaLatar="blue" onSelect33={this.changeColor}/>
+        <ColorButton warnaLatar="orange" onSelect33={this.changeColor}/>
+        <ColorButton warnaLatar="white" onSelect33={this.changeColor}/>
+        <ColorButton warnaLatar="green" onSelect33={this.changeColor}/>
+        <ColorButton warnaLatar="pink" onSelect33={this.changeColor}/>
+        <ColorButton warnaLatar="brown" onSelect33={this.changeColor}/>
+        <ColorButton warnaLatar="silver" onSelect33={this.changeColor}/>
+        <ColorButton warnaLatar="gold" onSelect33={this.changeColor}/>
+        <ColorButton warnaLatar="yellow" onSelect33={this.changeColor}/>
+        <ColorButton warnaLatar="magenta" onSelect33={this.changeColor}/>
+      </ScrollView>
       
     );
   }
@@ -49,38 +47,7 @@ class AwesomeProject extends React.Component {
 
 const styles = StyleSheet.create({
   container :{
-    flex: 1,
-    flexDirection: 'column', //column --> Untuk ke bawah
-    justifyContent: 'center', //flex-start --> Untuk Rata Kiri
-                              //flex-end --> Untuk Rata Kanan
-                              //center --> Untuk tengah
-    alignItems: 'center', //untuk atas/bawah jika flexDirection=row
-    backgroundColor: 'yellow',
-
-  },
-  button :{
-    borderWidth: 2,
-    margin: 10,
-    padding: 10,
-    borderRadius: 10,
-    alignSelf: 'stretch',
-
-  },
-  row :{
-    flexDirection: 'row',
-    alignItems: 'center'
-  },
-  sample :{
-    height: 20,
-    width: 20,
-    borderRadius: 10,
-    borderWidth: 2,
-    margin: 5,
-    backgroundColor: 'white'
-  },
-  text :{
-    fontSize: 30,
-    margin: 5
+    flex: 1
   }
 });
 
